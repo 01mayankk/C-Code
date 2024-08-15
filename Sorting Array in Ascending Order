@@ -1,0 +1,59 @@
+#include <stdio.h>
+
+int SortArray( int *arr, int size) // Function to Sort Array
+{
+    int hold ;
+    
+    for(int i = 0; i < size; i++) //Taking Input
+    {
+        printf("\nEnter %d Element: ",i+1); 
+        scanf("%d",&arr[i]);
+    }
+    
+    printf("\nThe Entered Array is: "); // Printing Original Array
+    for(int i = 0; i < size; i++)
+    {
+        printf(" %d ",arr[i]);
+    }
+    
+    for(int i = 0; i < size; i++) // Sorting in Ascending Order
+    {
+        for(int j = 0; j < size - i - 1; j++)
+        {
+            if(arr[j] > arr[j+1]) // Comaping Every element to sort
+            {
+                hold = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = hold;
+            }
+            else
+            {
+                continue;
+            }
+        }
+    }
+    
+    return *arr;
+    
+}
+
+int main() {
+    // Write C code here
+    int size;
+    
+    printf("\nEnter No. of Elements: "); // taking Size of Array
+    scanf("%d",&size);
+    
+    int arr[size] ;
+    
+    SortArray(arr, size); // calling Function for Sorting
+    
+    printf("\n\nThe Entered Array in Ascending Order: "); // Printing the Sorted Array
+     for(int i = 0; i < size; i++)
+    {
+        printf(" %d ",arr[i]);
+    }
+    
+
+    return 0;
+}
