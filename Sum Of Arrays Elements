@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int SumOfArray( int *arr, int size, int *sum) // Function of summation of Elements of Array
+{
+    
+    for(int i = 0; i < size; i++) // Taking input
+    {
+        printf("\nEnter %d Element: ",i+1);
+        scanf("%d",&arr[i]);
+    }
+    
+    printf("\nThe Entered Array is: "); // Printing the original Array
+    for(int i = 0; i < size; i++)
+    {
+        printf(" %d ",arr[i]);
+    }
+    
+    for(int i = 0; i < size; i++) // Calcualting the summation
+    {
+        *sum += arr[i];
+    }
+    
+    return *sum;
+    
+}
+
+int main() {
+    // Write C code here
+    int size, sum = 0;
+    
+    printf("\nEnter No. of Elements: "); // Taking size of Array
+    scanf("%d",&size);
+    
+    int arr[size] ;
+    
+    SumOfArray(arr, size, &sum); // Calling Sum of Array function
+    
+    printf("\n\nThe Sum of Entered Elements of Array is: %d",sum); // Printing the sum of  array
+
+    return 0;
+}
