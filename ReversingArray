@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+int ReverseArray( int *arr, int size) // function to reverse the array
+{
+    int hold;
+    
+    for(int i = 0; i < size; i++)// loop for taking input elements in array
+    {
+        printf("\nEnter %d Element: ",i+1);
+        scanf("%d",&arr[i]);
+    }
+    
+    printf("\nThe Entered Array is: ");
+    for(int i = 0; i < size; i++) // printing original array
+    {
+        printf(" %d ",arr[i]);
+    }
+    
+    for(int i = 0; i < size/2; i++) // reversing the array
+    {
+        hold = arr[i];
+        arr[i] = arr[size - i - 1];
+        arr[size-i-1] = hold;
+    }
+    
+    return *arr;
+    
+}
+
+int main() {
+    // Write C code here
+    int size;
+    
+    printf("\nEnter No. of Elements: "); // taking size of array
+    scanf("%d",&size);
+    
+    int arr[size] ;
+    
+    ReverseArray(arr, size); // calling reverse-function 
+    
+    printf("\n\nThe Reverse of Entered Array is: "); // printing reversed array
+    for(int i = 0; i < size; i++)
+    {
+        printf(" %d ",arr[i]);
+    }
+
+    return 0;
+}
