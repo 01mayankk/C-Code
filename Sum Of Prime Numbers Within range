@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+int SumOfPrime(int start, int end, int *sum, int *Prime_no) { // Function to find prime number and for calculating Sum
+    int count = 0, times = 0, primeCount = 0;
+
+    for (int i = start; i <= end; i++) {
+        count = 0;
+
+        
+        for (int j = 2; j * j <= i; j++) { // Checking for Prime number
+            if (i % j == 0) {
+                count++;
+                break; 
+            }
+        }
+
+        if (count == 0 && i > 1) { // Storing Prime Numbers and Calculating Sum
+            *sum += i;
+            Prime_no[primeCount++] = i;
+        }
+    }
+
+    return primeCount; 
+}
+
+int main() {
+    int start, end, sum = 0;
+
+    printf("\nEnter Starting Value of range: "); // Taking Start range
+    scanf("%d", &start);
+
+    printf("\nEnter Ending Value of Range: "); // Taking End value
+    scanf("%d", &end);
+
+    int Prime_no[end - start + 2]; // Deciding length of Array
+    
+    int numPrimes = SumOfPrime(start, end, &sum, Prime_no);
+
+    printf("\n\nThe Prime Numbers Between range is: "); // Printing the prime numbers
+    for (int i = 0; i < numPrimes; i++) {
+        printf(" %d ", Prime_no[i]);
+    }
+
+    printf("\n\nThe Summation of the Primes within range is: %d", sum); // Printing the sum of Primes
+
+    return 0;
+}
