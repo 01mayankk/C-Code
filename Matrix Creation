@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+void Matrix(int rows, int columns, int matrix[rows][columns]) // Function for the taking input of elements of Matrix
+{
+    
+    for(int i = 1; i <= rows; i++) // 1 to No. of Rows
+    {
+        for(int j = 1; j <= columns; j++) // 1 to No. of Columns
+        {
+            printf("\nEnter Element of %d row and %d column: ",i, j); // Storing Elements of Matrix
+            scanf("%d",&matrix[i][j]);
+        }
+    }
+    
+    
+}
+
+int main() {
+    
+    int rows, columns;
+    
+    printf("\nEnter Number of Rows: "); // Taking No. of Rows
+    scanf("%d",&rows);
+    
+    printf("\nEnter Number of Columns: "); // Taking No. of Columns
+    scanf("%d",&columns);
+    
+    int matrix[rows][columns]; // Creating 2D Matrix Array
+    
+    Matrix(rows, columns, matrix); // calling for function
+    
+    printf("\nThe Entred Matrix is: \n"); // Printing the Matrix
+    for(int i = 1; i <= rows; i++)
+    {
+        for(int j = 1; j <= columns; j++)
+        {
+            printf(" %d ",matrix[i][j]);
+        }
+        
+        printf("\n "); // Inserting new line after every row
+    }
+
+    return 0;
+}
