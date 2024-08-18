@@ -1,0 +1,28 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int CheckLeapYear(int year)
+{
+    if((year % 4 == 0 && year % 100 != 0 ) || year % 400 == 0) // Checking Leap Year.  ( The year should be divisible 4 but not by 100 ,and in case of century divisible by 400 )
+    {
+        printf("\n%d year is leap year.",year); // Printing if it leap year
+    }
+    else
+    {
+        printf("\n%d is not leap year.",year); // Printing if it not leap year
+    }
+    
+    return 0;
+}
+
+int main() {
+    // Write C code here
+    int year;
+    
+    printf("\nEnter the Year to check: "); // Asking for Year input
+    scanf("%d",&year);
+    
+    CheckLeapYear(year); // Calling for function 
+
+    return 0;
+}
