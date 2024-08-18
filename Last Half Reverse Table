@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int Table_calculation(int number, int start, int end) // Function for calculating table
+{
+    int increase = 4 ; // First increase after half part
+    
+    for(int i = start; i <= end; i++ )
+    {
+        if ( i <= (start + end ) / 2)
+        {
+        printf("\n %d X %d = %d ",number, i, number*i); // Printing the table 
+        }
+        else
+        {
+            
+            printf("\n %d X %d = %d ",number, i+increase, number*(i+increase));
+            
+            increase -= 2; // Decrease By 2 everytime to get the right number to multiply and desired result 
+        }
+    }
+    
+    return 0;
+}
+
+int main() {
+    
+    int number, start, end;
+    
+    printf("\nEnter Number to get Table: "); // Input Number to get Table
+    scanf("%d",&number);
+    
+    printf("\nEnter the term from where you want to start table: "); // Input term from where you want to start the table
+    scanf("%d",&start);
+    
+    printf("\nEnter the term till where you want table: "); // Input term where you want to end table
+    scanf("%d",&end);
+    
+    Table_calculation(number, start, end); // Calling for function for calculations of table
+   
+    return 0;
+}
