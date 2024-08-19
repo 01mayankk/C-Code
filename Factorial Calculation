@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int Factorial(int number, int *value) // Function for calculations of Factorial
+{
+    *value = 1;
+    for(int i = 1; i <= number; i++) // Finding the value of factorial
+    {
+        *value *= i;
+    }
+    
+    return *value; // Returing the value to function
+}
+
+int main() {
+    
+    int number, value = 0; // Deceleration and Initialization of Variables 
+    
+    printf("\nEnter Number to get Factorial: "); // Taking input to calculate Factorial
+    scanf("%d",&number);
+    
+    Factorial(number, &value); // Calling funtion for calculations 
+    
+    printf("\nThe Factorial of entered number is: \n"); // Printing the result
+    for(int i = number; i >= 1; i--) // Loop to print from entered value to 1 to show the detailed explanation like (1 X 2 X ....... till value = result )
+    {
+        if ( i == 1)
+        {
+            printf("%d ",i);
+        }
+        else
+        {
+            printf("%d x ",i);
+        }
+        
+    }
+    printf("= "); 
+    printf("%d",value); // Printing Answer
+
+    return 0;
+}
