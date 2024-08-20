@@ -1,0 +1,67 @@
+#include <stdio.h>
+
+int Inserting_element(int array[], int *size) // Calling function for insertion of element
+{
+    int new_element, position; 
+    
+    for(int i = 1; i <= *size; i++) // Taking Array Elements 
+    {
+        printf("\nEnter Element %d: ",i);
+        scanf("%d",&array[i]);
+    }
+    
+    printf("\nThe Original Array is: "); // Printing Original Elements 
+    for(int i = 1; i <= *size; i++)
+    {
+        printf("%d ",array[i]);
+        
+    }
+    
+    *size += 1; // Increasing the size of array
+    printf("\nEnter the New Element: "); // Asking for new element
+    scanf("%d",&new_element);
+    
+    printf("\nThe size of Array is: %d\n",*size); // Printing the of Array 
+    
+    printf("\nEnter the position for new_element: "); // Taking new position to insert element
+    scanf("%d",&position);
+    
+    
+    
+    int hold;
+    
+    for(int i = *size; i >= position; i--) // Shifting ech element to right to get space at desired index
+    {
+        if( i == position )
+        {
+            array[i] = new_element; // putting  new element at desired index
+        }
+        else
+        {
+            array[i] = array[i-1];
+        } // shifting of element 
+    }
+    
+    return *size; // returning new size of Array
+}
+
+int main() {
+    
+    int size; 
+    
+    printf("\nEnter Size of Array: "); // Asking for the size of Array
+    scanf("%d",&size);
+    
+    int array[size];
+    
+    Inserting_element(array, &size); // calling for function
+    
+    printf("\nArray after inserting Element: "); // printing New array
+    for(int i = 1; i <= size; i++)
+    {
+        printf(" %d ",array[i]);
+    }
+    
+
+    return 0;
+}
