@@ -1,0 +1,95 @@
+#include <stdio.h>
+
+int Search_element(int array[], int *size, int *index, int *found) // Function to search for element
+{
+    int value ,  not_found = 0;
+    
+    printf("\nThe Original Array is: "); // Printing the Original Array
+    for(int i = 1; i <= *size; i++)
+    {
+        printf(" %d ",array[i]);
+    }
+    
+    printf("\nEnter value you want to delete: "); // Taking input to search for element to delete
+    scanf("%d",&value);
+    
+    for(int i = 1; i <= *size; i++) // finding value in array and and its index
+    {
+        if (value == array[i])
+        {
+            printf("\nThe value is found at index %d. ",i); // Printing the index of entered element
+            *index = i; 
+            *found += 1;
+            
+         
+        }
+        else
+        {
+            not_found += 1; // If element is not present in Array 
+        }
+    }
+    if(not_found != (*size -1))
+    {
+        printf("\nThe entered value is not in array. "); // Printing if element is not in array
+    }
+    
+    return *index, *found; // returno ing index and found so that if element is not in array the different message will print
+}
+
+
+int Delete_element(int array[], int *size, int *index) // Function for deletion of element in Array
+{
+    *size -= 1; // decreasing size by 1 so that we get new size array
+    for(int i = 1; i <= *size+1; i++) // deleting the element entered by the user
+    {
+        if(i == *index)
+        {
+            for(int i = *index; i <= *size; i++) // shifting every element to left from the index at which element is found till size - 1 
+            {
+                array[i] = array[i+1];
+            }
+            
+        }
+    }
+    
+    return *size; // returning new size;
+}
+int main() {
+    
+    int size, index = 0, found = 0;
+    
+    printf("\nEnter Size of Array: "); // taking size of array
+    scanf("%d",&size);
+    
+    int array[size];
+    
+    for(int i = 1; i <= size; i++) // Taking elements of an array
+    {
+        printf("\nEnter Element %d: ",i);
+        scanf("%d",&array[i]);
+    }
+    
+    Search_element(array, &size, &index, &found); // calling the function for search the element
+   
+    if(found == 1) // calling function and printing message  when element is found and to be deleted
+    {
+        Delete_element(array, &size, &index); //calling function to delete element if the entered element is found in array
+        printf("\nThe Array after deletion is: ");
+        for(int i = 1; i <= size; i++)
+        {
+            printf(" %d ",array[i]); // printing the array after deletion of element
+        }
+    }
+    else
+    {
+        printf("\nThe Array without deletion is: "); // Printing the element if the entered element is not found in array
+        for(int i = 1; i <= size; i++)
+        {
+            printf(" %d ",array[i]);   
+        }
+    }
+    
+    
+
+    return 0;
+}
