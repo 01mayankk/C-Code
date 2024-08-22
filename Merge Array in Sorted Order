@@ -1,0 +1,66 @@
+#include <stdio.h>
+
+int main() {
+    int n, m;
+    
+    // Input the size of first array
+    printf("\nEnter Size of first array: ");
+    scanf("%d", &n);
+    int arr1[n];
+    
+    // Input the member IDs of the first array
+    printf("\nEnter Elements of first array\n ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr1[i]);
+    }
+    
+    // Input the size of the second array 
+    printf("\nEnter Size of Second Array: ");
+    scanf("%d", &m);
+    int arr2[m];
+    
+    // Input the member IDs of the second array
+    printf("\nEnter Elements of Second array\n ");
+    for (int i = 0; i < m; i++) {
+        scanf("%d", &arr2[i]);
+    }
+
+    // Array to store the merged and unique IDs
+    int merged[50] = {0};  // Initialize to 0 to store counts
+    int unique[50];        // To store the unique elements
+    int index = 0;         // Track the position for unique elements
+
+    // Mark the presence of members in the first array
+    for (int i = 0; i < n; i++) {
+        if (merged[arr1[i]] == 0) {
+            unique[index++] = arr1[i];
+        }
+        merged[arr1[i]] = 1;
+    }
+    
+    // Mark the presence of members in the second array
+    for (int i = 0; i < m; i++) {
+        if (merged[arr2[i]] == 0) {
+            unique[index++] = arr2[i];
+        }
+        merged[arr2[i]] = 1;
+    }
+    
+    // Sort the unique array since the input is already sorted, this step will ensure that merged list is also sorted.
+    for (int i = 0; i < index; i++) {
+        for (int j = i + 1; j < index; j++) {
+            if (unique[i] > unique[j]) {
+                int temp = unique[i];
+                unique[i] = unique[j];
+                unique[j] = temp;
+            }
+        }
+    }
+
+    // Print the unique member IDs in ascending order
+    for (int i = 0; i < index; i++) {
+        printf("%d ", unique[i]);
+    }
+
+    return 0;
+}
